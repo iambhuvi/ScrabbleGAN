@@ -2,17 +2,17 @@ import torch
 
 
 class Config:
-    dataset = 'RIMES'  # 'RIMES' / 'IAM'
-    data_folder_path = './RIMES/'  # relative to ./data/
+    dataset = 'IAM'  # 'RIMES' / 'IAM'
+    data_folder_path = './IAM/'  # relative to ./data/
     img_h = 32
     char_w = 16
     partition = 'tr'  # 'tr' / 'vl' / 'te'
 
-    batch_size = 8
-    num_epochs = 200
-    epochs_lr_decay = 100  # learning rate decay will be applied for last these many steps (should be <= num_epochs)
-    resume_training = False
-    start_epoch = 5
+    batch_size = 16
+    num_epochs = 100
+    epochs_lr_decay = 50  # learning rate decay will be applied for last these many steps (should be <= num_epochs)
+    resume_training = True
+    start_epoch = 44
 
     train_gen_steps = 4  # generator weights to be updated after every specified number of steps
     grad_alpha = 1
@@ -49,5 +49,5 @@ class Config:
     # Noise vector
     z_dim = 128
     num_chars = 74 if dataset == 'IAM' else 93
-
+    
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
